@@ -1,54 +1,27 @@
 import React from "react";
 
-const foodILike = [
-  {
-    id: 1,
-    name: "Kimch",
-    image:
-      "https://cdn.crowdpic.net/detail-thumb/thumb_d_CDC14868821FF3F20C77BC8BC15E6355.jpg",
-    rating: 5,
-  },
-  {
-    id: 2,
-    name: "Kimbab",
-    image:
-      "https://www.gyeongju.go.kr/upload/content/thumb/20200506/9DD6ED74C34C4B0B9FA0BA67F49C3BEE.jpg",
-    rating: 7,
-  },
-  {
-    id: 3,
-    name: "Samgiopsal",
-    image:
-      "http://ojsfile.ohmynews.com/STD_IMG_FILE/2017/0719/IE002190922_STD.JPG",
-    rating: 10,
-  },
-];
+class App extends React.Component {
+  state = {
+    count: 10,
+  };
 
-Food.propTypes = {};
+  add = () => {
+    this.setState((current) => ({ count: current.count + 1 }));
+  };
 
-function Food({ name, picture, rating }) {
-  return (
-    <div>
-      <h2>I like {name}</h2>
-      <h4>Rating {rating} / 10.0 </h4>
-      <img src={picture} alt={name} />
-    </div>
-  );
-}
+  minus = () => {
+    this.setState((current) => ({ count: current.count - 1 }));
+  };
 
-function App() {
-  return (
-    <div>
-      {foodILike.map((dish) => (
-        <Food
-          key={dish.id}
-          name={dish.name}
-          picture={dish.image}
-          rating={dish.rating}
-        />
-      ))}
-    </div>
-  );
+  render() {
+    return (
+      <div>
+        <h1>The number is : {this.state.count}</h1>
+        <button onClick={this.add}>Add</button>
+        <button onClick={this.minus}>Minus</button>
+      </div>
+    );
+  }
 }
 
 export default App;
